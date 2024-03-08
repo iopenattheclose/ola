@@ -10,6 +10,8 @@ from src.components.data_preprocess_feature_eng import DataPreProcessingFE,DataP
 
 from src.components.data_transformation import DataTransformation,DataTransformationConfig
 
+from src.components.model_trainer import ModelTrainer,ModelTrainerConfig
+
 @dataclass
 class DataIngestionConfig:
     #declaring path variable ie created in artifacts folder
@@ -44,6 +46,9 @@ if __name__=="__main__":
 
     data_PPFE = DataPreProcessingFE()
     preprocessed_df,train_data_path,test_data_path = data_PPFE.initiate_data_preprocessing()
-    
+
     data_transformation = DataTransformation()
     train_arr,test_arr,_=data_transformation.initiate_data_transformation(preprocessed_df,train_data_path,test_data_path)
+
+    modeltrainer=ModelTrainer()
+    print((modeltrainer.initiate_model_trainer(train_arr,test_arr)))
