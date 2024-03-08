@@ -129,12 +129,52 @@ class DataPreProcessingFE:
                         si.append(0)
                 df1['Income_Increased'] = si
 
+                #Binning the Age into categories
+                df1['Age_Bin'] = pd.cut(df1['Age'],bins=[20,35,50,65])
+
+                #Age feature with Target
+                agebin = pd.crosstab(df1['Age_Bin'],df1['Target'])
+
+                #Binning the Income into categories
+                df1['Income_Bin'] = pd.cut(df1['Income'],bins=[10000, 40000, 70000, 100000, 130000, 160000, 190000 ])
+
+                #Salary feature with Target
+                salarybin = pd.crosstab(df1['Income_Bin'],df1['Target'])
+
+                #Defining the bins and groups
+                m1 = round(df1['Total_Business_Value'].min())
+                m2 = round(df1['Total_Business_Value'].max())
+                bins = [m1, 80000 , 2000000 , 3200000, 4400000, 5600000, 6800000, m2]
+
+                #Binning the Total Business Value into categories
+                df1['TBV_Bin'] = pd.cut(df1['Total_Business_Value'],bins)
+
+                #Total Business Value feature with Target
+                tbvbin = pd.crosstab(df1['TBV_Bin'],df1['Target'])
+
+                #Dropping the bins columns
+                df1.drop(['Age_Bin','Income_Bin','TBV_Bin'],axis=1,inplace=True)
+
+                df1 = pd.concat([df1,pd.get_dummies(df1['City'],prefix='City')],axis=1)
+
                 print(df1.head())
 
-            except:
-                 pass
+                logging.info("Train test split initiated")
+
+                train_set,test_set=train_test_split(df1,test_size=0.2,random_state=42)
+
+                train_set.to_csv(self.preprocessing_config.train_data_path,index=False,header=True)
+
+                test_set.to_csv(self.preprocessing_config.test_data_path,index=False,header=True)
+
+                logging.info("Data split is completed")
+
+                return(
+                    df1,
+                    self.preprocessing_config.train_data_path,
+                    self.preprocessing_config.test_data_path
+                )
+
+            except Exception as e:
+                raise CustomException(e,sys)
             
-if __name__=="__main__":
-    logging.info("test datappfe")
-    obj = DataPreProcessingFE()
-    obj.initiate_data_preprocessing()

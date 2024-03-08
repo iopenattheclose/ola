@@ -6,6 +6,10 @@ import pandas as pd
 
 from dataclasses import dataclass
 
+from src.components.data_preprocess_feature_eng import DataPreProcessingFE,DataPreProcessingFEConfig
+
+from src.components.data_transformation import DataTransformation,DataTransformationConfig
+
 @dataclass
 class DataIngestionConfig:
     #declaring path variable ie created in artifacts folder
@@ -35,5 +39,11 @@ class DataIngestion:
                 raise CustomException(e,sys)
             
 if __name__=="__main__":
-     obj = DataIngestion()
-     obj.initiate_data_ingestion()
+    obj = DataIngestion()
+    obj.initiate_data_ingestion()
+
+    data_PPFE = DataPreProcessingFE()
+    preprocessed_df,train_data_path,test_data_path = data_PPFE.initiate_data_preprocessing()
+    
+    data_transformation = DataTransformation()
+    train_arr,test_arr,_=data_transformation.initiate_data_transformation(preprocessed_df,train_data_path,test_data_path)
