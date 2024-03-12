@@ -27,7 +27,7 @@ class ModelTrainer:
         try:
             logging.info("Split training and test input data")
 
-            param = {'max_depth':[2,3,4,5,6,7], 'n_estimators':[50,100,150,200,250]}
+            param = {'max_depth':[2,3,4,5,6,7], 'n_estimators':[50,100,125,150,200,250,300,350]}
             random_forest = RandomForestClassifier(class_weight ='balanced')
 
             X_train,y_train,X_test,y_test=(
@@ -53,10 +53,13 @@ class ModelTrainer:
             print(f'Best parameters are : {c.best_params_}')
             print(f'The score is : {c.best_score_}')
             y_pred = c.predict(X_test)
+            # print(y_pred)
 
             print(classification_report(y_test, y_pred))
             cm = confusion_matrix(y_test, y_pred)
             print(cm)
+
+            return c.best_score_
 
         except Exception as e:
             raise CustomException(e,sys)

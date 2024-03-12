@@ -51,4 +51,5 @@ if __name__=="__main__":
     train_arr,test_arr,_=data_transformation.initiate_data_transformation(preprocessed_df,train_data_path,test_data_path)
 
     modeltrainer=ModelTrainer()
-    modeltrainer.initiate_model_trainer(train_arr,test_arr)
+    print('Accuracy of Ensemble model on test data set: {:.5f}'.format(modeltrainer.initiate_model_trainer(train_arr,test_arr)))
+    
