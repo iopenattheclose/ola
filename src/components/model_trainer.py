@@ -50,11 +50,8 @@ class ModelTrainer:
                 obj = c
             )
 
-            def display(results):
-                print(f'Best parameters are : {results.best_params_}')
-                print(f'The score is : {results.best_score_}')
-        
-            display(c)
+            print(f'Best parameters are : {c.best_params_}')
+            print(f'The score is : {c.best_score_}')
             y_pred = c.predict(X_test)
 
             print(classification_report(y_test, y_pred))
