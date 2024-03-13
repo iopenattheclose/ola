@@ -157,6 +157,8 @@ class DataPreProcessingFE:
 
                 df1 = pd.concat([df1,pd.get_dummies(df1['City'],prefix='City')],axis=1)
 
+                df1.drop(['Driver_ID','City'],axis=1,inplace=True)
+
                 print(df1.head())
 
                 logging.info("Train test split initiated")

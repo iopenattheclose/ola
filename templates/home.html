@@ -4,10 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loan Application Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1f1f1f;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            text-align: center;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label {
+            font-weight: bold;
+            color: #e0e0e0;
+        }
+        input[type="number"] {
+            width: calc(100% - 10px);
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #666;
+            background-color: #444;
+            color: #e0e0e0;
+            outline: none;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #e0e0e0;
+        }
+    </style>
 </head>
 <body>
 
     <h1>OLA Churn Prediction Application Form</h1>
+    <h2>This is an internal site meant for HR only. The data entry is standardized, please refer the internal
+        tool for input ranges
+    </h2>
     <form action="{{ url_for('predict_datapoint')}}" method="post">
         <label for="Age">Age:</label>
         <input type="number" id="Age" name="Age" required><br>
@@ -39,90 +100,38 @@
         <label for="Income_Increased">Income Increased:</label>
         <input type="number" id="Income_Increased" name="Income_Increased" required><br>
 
-        <label for="City_C1">City C1:</label>
-        <input type="number" id="City_C1" name="City_C1" required><br>
-
-        <label for="City_C10">City C10:</label>
-        <input type="number" id="City_C10" name="City_C10" required><br>
-
-        <label for="City_C11">City C11:</label>
-        <input type="number" id="City_C11" name="City_C11" required><br>
-
-        <label for="City_C12">City C12:</label>
-        <input type="number" id="City_C12" name="City_C12" required><br>
-
-        <label for="City_C13">City C13:</label>
-        <input type="number" id="City_C13" name="City_C13" required><br>
-
-        <label for="City_C14">City C14:</label>
-        <input type="number" id="City_C14" name="City_C14" required><br>
-
-        <label for="City_C15">City C15:</label>
-        <input type="number" id="City_C15" name="City_C15" required><br>
-
-        <label for="City_C16">City C16:</label>
-        <input type="number" id="City_C16" name="City_C16" required><br>
-
-        <label for="City_C17">City C17:</label>
-        <input type="number" id="City_C17" name="City_C17" required><br>
-
-        <label for="City_C18">City C18:</label>
-        <input type="number" id="City_C18" name="City_C18" required><br>
-
-        <label for="City_C19">City C19:</label>
-        <input type="number" id="City_C19" name="City_C19" required><br>
-
-        <label for="City_C2">City C2:</label>
-        <input type="number" id="City_C2" name="City_C2" required><br>
-
-        <label for="City_C20">City C20:</label>
-        <input type="number" id="City_C20" name="City_C20" required><br>
-
-        <label for="City_C21">City C21:</label>
-        <input type="number" id="City_C21" name="City_C21" required><br>
-
-        <label for="City_C22">City C22:</label>
-        <input type="number" id="City_C22" name="City_C22" required><br>
-
-        <label for="City_C23">City C23:</label>
-        <input type="number" id="City_C23" name="City_C23" required><br>
-
-        <label for="City_C24">City C24:</label>
-        <input type="number" id="City_C24" name="City_C24" required><br>
-
-        <label for="City_C25">City C25:</label>
-        <input type="number" id="City_C25" name="City_C25" required><br>
-
-        <label for="City_C26">City C26:</label>
-        <input type="number" id="City_C26" name="City_C26" required><br>
-
-        <label for="City_C27">City C27:</label>
-        <input type="number" id="City_C27" name="City_C27" required><br>
-
-        <label for="City_C28">City C28:</label>
-        <input type="number" id="City_C28" name="City_C28" required><br>
-
-        <label for="City_C29">City C29:</label>
-        <input type="number" id="City_C29" name="City_C29" required><br>
-
-        <label for="City_C3">City C3:</label>
-        <input type="number" id="City_C3" name="City_C3" required><br>
-
-        <label for="City_C4">City C4:</label>
-        <input type="number" id="City_C4" name="City_C4" required><br>
-
-        <label for="City_C5">City C5:</label>
-        <input type="number" id="City_C5" name="City_C5" required><br>
-
-        <label for="City_C6">City C6:</label>
-        <input type="number" id="City_C6" name="City_C6" required><br>
-
-        <label for="City_C7">City C7:</label>
-        <input type="number" id="City_C7" name="City_C7" required><br>
-
-        <label for="City_C8">City C8:</label>
-        <input type="number" id="City_C8" name="City_C8" required><br>
-        <div>
+        <label for="City">Select City:</label>
+        <select id="City" name="City">
+            <option value="City_C1">City C1</option>
+            <option value="City_C10">City C10</option>
+            <option value="City_C11">City C11</option>
+            <option value="City_C12">City C12</option>
+            <option value="City_C13">City C13</option>
+            <option value="City_C14">City C14</option>
+            <option value="City_C15">City C15</option>
+            <option value="City_C16">City C16</option>
+            <option value="City_C17">City C17</option>
+            <option value="City_C18">City C18</option>
+            <option value="City_C19">City C19</option>
+            <option value="City_C2">City C2</option>
+            <option value="City_C20">City C20</option>
+            <option value="City_C21">City C21</option>
+            <option value="City_C22">City C22</option>
+            <option value="City_C23">City C23</option>
+            <option value="City_C24">City C24</option>
+            <option value="City_C25">City C25</option>
+            <option value="City_C26">City C26</option>
+            <option value="City_C27">City C27</option>
+            <option value="City_C28">City C28</option>
+            <option value="City_C29">City C29</option>
+            <option value="City_C3">City C3</option>
+            <option value="City_C4">City C4</option>
+            <option value="City_C5">City C5</option>
+            <option value="City_C6">City C6</option>
+            <option value="City_C7">City C7</option>
+            <option value="City_C8">City C8</option>
+            <option value="City_C9">City C9</option>
+        </select>
             <input type="submit" value="Submit Application">
         </div>
     </form>
